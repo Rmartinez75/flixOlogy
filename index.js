@@ -26,6 +26,7 @@ const { isEmpty } = require('lodash');
 require('./passport');
 
 let allowedOrigins = [
+  '*',
   'http://localhost:8080',
   'https://flixology.herokuapp.com/client/',
   'http://localhost:1234',
