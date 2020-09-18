@@ -52556,7 +52556,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        // Assign the result to the state
         _this2.props.setMovies(response.data);
       }).catch(function (error) {
         console.log(error);
@@ -52580,7 +52579,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       this.setState({
         user: null
       });
-      window.open('/', '_self');
+      window.open('/client', '_self');
     }
   }, {
     key: "render",
@@ -52693,160 +52692,7 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var _default = (0, _reactRedux.connect)(mapStateToProps, {
   setMovies: _actions.setMovies
-})(MainView); // import React from 'react';
-// import axios from 'axios';
-// import { connect } from 'react-redux';
-// import Container from 'react-bootstrap/Container';
-// import { Navbar, Nav } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import { setMovies, setUser } from '../../actions/actions';
-// import MoviesList from '../movies-list/movies-list';
-// import { LoginView } from '../login-view/login-view';
-// import { MovieView } from '../movie-view/movie-view';
-// import { RegistrationView } from '../registration-view/registration-view';
-// import { DirectorView } from '../director-view/director-view';
-// import { GenreView } from '../genre-view/genre-view';
-// import { ProfileView } from '../profile-view/profile-view';
-// import { UpdateProfile } from '../update-profile/update-profile';
-// class MainView extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       user: null,
-//     };
-//   }
-//   componentDidMount() {
-//     let accessToken = localStorage.getItem('token');
-//     if (accessToken !== null) {
-//       // this.setState({
-//       //   user: localStorage.getItem('user'),
-//       // });
-//       this.props.setUser(localStorage.getItem('user'));
-//       this.getMovies(accessToken);
-//     }
-//   }
-//   getMovies(token) {
-//     axios
-//       .get('https://flixology.herokuapp.com/movies', {
-//         headers: { Authorization: `Bearer ${token}` },
-//       })
-//       .then((response) => {
-//         this.props.setMovies(response.data);
-//       })
-//       .catch(function (error) {
-//         console.log(error);
-//       });
-//   }
-//   onLoggedIn(authData) {
-//     this.setState({
-//       user: authData.user.Username,
-//     });
-//     localStorage.setItem('token', authData.token);
-//     localStorage.setItem('user', authData.user.Username);
-//     this.getMovies(authData.token);
-//   }
-//   onLoggedOut(authData) {
-//     localStorage.removeItem('token');
-//     localStorage.removeItem('user');
-//     this.setState({
-//       user: null,
-//     });
-//     window.open('/', '_self');
-//   }
-//   render() {
-//     let { movies } = this.props;
-//     let { user } = this.state;
-//     return (
-//       <Router>
-//         <Container>
-//           <div className='main-view'>
-//             <Navbar className='fixed-top' bg='dark' variant='dark'>
-//               <Nav className='mr-auto'>
-//                 <Nav.Link as={Link} to='/'>
-//                   Home
-//                 </Nav.Link>
-//                 <Nav.Link onClick={() => this.onLoggedOut()}>LogOut</Nav.Link>
-//                 <Nav.Link as={Link} to={`/users/${user}`}>
-//                   Profile
-//                 </Nav.Link>
-//               </Nav>
-//             </Navbar>
-//             <br></br>
-//             <br></br>
-//             <div className='main-view'>
-//               <Route
-//                 exact
-//                 path='/'
-//                 render={() => {
-//                   if (!user)
-//                     return (
-//                       <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-//                     );
-//                   return <MoviesList movies={movies} />;
-//                 }}
-//               />
-//               <Route
-//                 exact
-//                 path='/users/'
-//                 render={() => window.open('/client', '_self')}
-//               />
-//               <Route path='/register' render={() => <RegistrationView />} />
-//               <Route
-//                 path='/movies/:movieId'
-//                 render={({ match }) => (
-//                   <MovieView
-//                     movie={movies.find((m) => m._id === match.params.movieId)}
-//                   />
-//                 )}
-//               />
-//               <Route
-//                 path='/movies/director/:name'
-//                 render={({ match }) => {
-//                   if (!movies) return <div className='main-view' />;
-//                   return (
-//                     <DirectorView
-//                       director={
-//                         movies.find(
-//                           (m) => m.Director.Name === match.params.name
-//                         ).Director
-//                       }
-//                     />
-//                   );
-//                 }}
-//               />
-//               <Route
-//                 path='/movies/genres/:name'
-//                 render={({ match }) => {
-//                   if (!movies) return <div className='main-view' />;
-//                   return (
-//                     <GenreView
-//                       genre={
-//                         movies.find((m) => m.Genre.Name === match.params.name)
-//                           .Genre
-//                       }
-//                     />
-//                   );
-//                 }}
-//               />
-//               <Route
-//                 exact
-//                 path='/users/:userId'
-//                 render={() => <ProfileView movies={movies} />}
-//               />
-//               <Route path='/user/update' render={() => <UpdateProfile />} />
-//             </div>
-//           </div>
-//         </Container>
-//       </Router>
-//     );
-//   }
-// }
-// let mapStateToProps = (state) => {
-//   return { movies: state.movies };
-// };
-// export default connect(mapStateToProps, { setMovies, setUser })(MainView);
-
+})(MainView);
 
 exports.default = _default;
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-redux":"../node_modules/react-redux/es/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../actions/actions":"actions/actions.js","../movies-list/movies-list":"components/movies-list/movies-list.jsx","../login-view/login-view":"components/login-view/login-view.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx","../update-profile/update-profile":"components/update-profile/update-profile.jsx","/index.scss":"index.scss"}],"reducers/reducers.js":[function(require,module,exports) {
@@ -53005,7 +52851,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53426" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52958" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
